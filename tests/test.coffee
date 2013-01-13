@@ -1,12 +1,46 @@
 #!/usr/bin/env coffee
 
+###
+sto·ry1   [stawr-ee, stohr-ee] , plural sto·ries, verb, sto·ried, sto·ry·ing. noun
+5. a narration of an incident or a series of events or an example of these that is or may be narrated, as an anecdote, joke, etc.
+
+The upstream original source code of this fork employed common technique where we
+customize object properties through the use of prototypes, and decided to name:
+- one of the properties to be named 'new' and;
+- the name of the colorized field to be 'event'.
+
+This was not such a briliant move, concidering the fact these are reserved keywords
+in JavaScript. Also I had to do quite some work in the field of 'code quality'
+but with help a few good hint/linters got rid of most the bad coding implements.
+
+
+
+###
+
 # Dependencies
 log = require('./logger.coffee').config { level: 0 }
 
-# Three built-in stories to tell
+class Logger
+
+  constructor : (@key, @value) ->
+
+
+class Dictionary
+
+  constructor : (@key, @value) ->
+
+
+class Library extends Dictionary
+
+  constructor : (@key, @value) ->
+
+# Three native built-in types that I decided to expand
 log.info 'hello world!'               # harmless notifies
 log.warn 'carefule there, world!'     # danger possibly on the way
 log.error 'WHOA WHOA WHOA world?!'    # too late now, you fecked up
+
+# Notice these will be overidden lateron in this file, thus having two seperate
+# styles for the same events and aftermath
 
 # Custom events, no pain at all :)
 log.create
@@ -107,7 +141,7 @@ log.create
   # Inspection of code, plugin integrity, statistics and such? JSLinters?
   inspect:
     level: 3
-    story: "🔎 inspect"
+    story: "🔎 inspects"
     color: "white"
 
   lock:
@@ -115,22 +149,47 @@ log.create
     story: "🔓 unlock" || "🔒 lock"
     color: "gray"
 
-  cut:
+  elite:
     level: 3
-    story: "🔪 codecut"
+    story: "🔪 cuts code"
     color: "black"
 
   wait:
     level: 1
-    story: "🕝 waits"
+    story: "🕝 waits on"
     color: "white"
 
   launch:
     level: 0
-    story: "🚀 deploy"
-    color: "gray"
+    story: " 🚀 deploy "
+    color: "pink"
 
+  baby:
+    level: 3
+    story: "😭 cry"
+    color: "pink"
 
+  rb:
+    level: 3
+    story: "🚡 rail"
+    color: "black"
+
+  milestone:
+    level: 0
+    #signs: "🚩"
+    story: "signs + milestone"
+    #synon: "mark" || "landmark"
+    color: "gold"
+
+  copyright:
+    level: 3
+    story: "© copyright"
+    color: "white"
+
+  time:
+    level: 0
+    story: "∞ infite"
+    color: "black"
 
 
 # Use it here
@@ -141,7 +200,7 @@ log.create
 
   info:
     level: 0
-    story: '✎ info'
+    story: " info ✎ "
     color: 'cyan'
 
   notify:
@@ -166,7 +225,7 @@ log.info 'foo'
 log.notify 'ba'
 log.warn 'bar'
 log.error 'a'
-log.wait 'online connection established'
+log.launch 'to heroku'
 
 
 

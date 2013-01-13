@@ -8,10 +8,11 @@ No top level type defined yet
 log_event = (options) ->
 
   # it has 3 local members, all being set by the options parameter value
-  @story = options.story
+  @story = options.story or null
   @level = options.level or 0
   @color = options.color or "white"
 
+#"use strict"
 dateFormat    = require("dateformat")
 colors        = require("colors")
 events        = {}
