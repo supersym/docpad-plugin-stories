@@ -20,19 +20,19 @@ but with help a few good hint/linters got rid of most the bad coding implements.
 # Dependencies
 log = require('./logger.coffee').config { level: 0 }
 
-class Logger
+# class Logger
 
-  constructor : (@key, @value) ->
-
-
-class Dictionary
-
-  constructor : (@key, @value) ->
+#   constructor : (@key, @value) ->
 
 
-class Library extends Dictionary
+# class Dictionary
 
-  constructor : (@key, @value) ->
+#   constructor : (@key, @value) ->
+
+
+# class Library extends Dictionary
+
+#   constructor : (@key, @value) ->
 
 # Three native built-in types that I decided to expand
 log.info 'hello world!'               # harmless notifies
@@ -137,6 +137,7 @@ log.create
   mobile:
     level: 2
     story: "📲 mobile"
+    color: "leightblue"
 
   # Inspection of code, plugin integrity, statistics and such? JSLinters?
   inspect:
@@ -146,7 +147,7 @@ log.create
 
   lock:
     level: 0
-    story: "🔓 unlock" || "🔒 lock"
+    story: "🔓 unlock" #|| "🔒 lock"
     color: "gray"
 
   elite:
@@ -176,8 +177,8 @@ log.create
 
   milestone:
     level: 0
-    #signs: "🚩"
-    story: "signs + milestone"
+    signs: "🚩"
+    story: "signs milestone"
     #synon: "mark" || "landmark"
     color: "gold"
 
@@ -194,9 +195,11 @@ log.create
   timer:
     level: 0
     story: "⌛ 123s"
-    color: "grey"
+    color: "gray"
 
-
+# ⌨ kb ℁ as ❓ q ⟲ cb 🎖 award 🏭 factory 🏴 flag 🏞 landscape 🎜 tune 🎮 controller 🎗 ribbon 🎓 edu 🎃 mask 🎄 tree 🍵 🍬 candy 🍪 cookie 🌀 🚾 flush
+# 📂 folder 📆 event 💿 optical 💻 pc 📄 file 📃 document 📋 clipboard 💥action 💡 tip 💤 sleep 💬 speech 💭 thought 👽 external entity 👭 coupled 👀 view
+# 👂 listener 🍒 cherry pick 🌐 grid 🌊 flow # ★ favorite
 
 # Use it here
 log.debug "is this a bug?"
@@ -207,28 +210,29 @@ log.create
   info:
     level: 0
     story: " info ✎ "
-    color: 'cyan'
+    color: "cyan"
 
   notify:
-    story: '📢 notice'
-    color: 'yellow'
+    story: "📢 notice"
+    color: "yellow"
     level: 1
 
   warn:
-    story: '☢ warning'
-    color: 'yellow'
+    story: "☢ warning"
+    color: "yellow"
     level: 2
 
   error:
-    story: '☠ error'
-    color: 'red'
+    story: "💀 error"
+    color: "red"
     level: 3
 
 # Try them out
-log.info 'foo'
-log.notify 'ba'
-log.warn 'bar'
-log.error 'a'
+log.info      'Dit is belangrijke informatie die je moet lezen'
+log.notify    'Dit is een wat meer algemeen bericht'
+log.warn      'Een waarschuwing is het halve werk'
+log.error     'Maar nu ben je echt toch te laat'
+log.milestone      'Heb een app geinstalleerd ergens'
 
 
 

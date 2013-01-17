@@ -4,14 +4,18 @@ No top level type defined yet
 ###
 
 
-# log_event variable is a function which accepts a options object
+###
+Prototype
+###
 log_event = (options) ->
 
   # it has 3 local members, all being set by the options parameter value
-  @story = options.story
+  @story = options.story or ""
   @level = options.level or 0
   @color = options.color or "white"
+  @signs = options.signs or ""
 
+# Dependencies
 dateFormat    = require("dateformat")
 colors        = require("colors")
 events        = {}
@@ -21,11 +25,15 @@ options =
   format: "%timestamp% - %story%:%padding%  %message%"
   timestamp: "HH:MM:ss"
 
+# Double-colon :: is shorthand for saying `.prototype`
 log_event::config = (config) ->
   for key of config
+    # The “at” sign @ is shorthand for saying `this`
     @[key] = config[key]
   @
 
+
+# Same prototype but now defines the getter properties
 log_event::__defineGetter__ "padding", ->
   length = 0
   padding = ""
@@ -38,14 +46,16 @@ log_event::__defineGetter__ "padding", ->
     i++
   padding
 
+
+# Render a story for this event
 log_event::output = (input) ->
+
+  # Not generate a message if silenced
   if options.level <= @level
     message = ""
     for i of input
       message += " " + ((if typeof input[i] is "object" then JSON.stringify(input[i], null) else input[i]))
     format = @format or options.format
-    #timestamp
-    #log story & color
     output = format.replace("%timestamp%", dateFormat(new Date(), @timestamp or options.timestamp)).replace("%story%", @story[@color]).replace("%padding%", @padding).replace("%message%", message)
     console.log output
 
